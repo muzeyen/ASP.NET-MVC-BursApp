@@ -1,0 +1,33 @@
+﻿
+@model IEnumerable<BursApp.Models.Burslar>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>GÜNCEL BURSLAR</h2>
+<a class="btn btn-default" href="/Home/CreateBurs/">Yeni Ekle</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Başlık</th>
+            <th>Açıklama</th>
+            <th>Burs Miktarı</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.BursID</td>
+                <td>@item.BursBaslik</td>
+                <td>@Html.Raw(item.BursAciklama)</td>
+                <td>@item.BursMiktari</td>
+                <td><a href="/Home/Edit/@item.BursID">Düzenle</a> | <a href="/Home/Delete/@item.BursID">Sil</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
